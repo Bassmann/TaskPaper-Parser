@@ -59,7 +59,7 @@ for task in flaglist:
         print '\t[%s] %s' % (task.project, task.task)
 if not today:
     print '\t (none)'
-
+'''
 print '\nOVERDUE\n'
 
 for task in flaglist:
@@ -88,7 +88,7 @@ for task in flaglist:
         print '\t[%s] %s' % (task.project, task.task)
 if not startthisweek:
     print '\t (none)'
-
+'''
 if len(errlist) != 0:
     print '\nERROR PARSING THESE LINES\n'
     for errtask in errlist:
