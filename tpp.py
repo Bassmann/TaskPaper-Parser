@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/local/bin/python
 #
 # TaskPaper Parser
 # K. Marchand 2014
@@ -25,6 +25,7 @@ for line in tplines:
     try:
         if '@done' in line:
             continue
+        #this next part does not work with 'Bulk Flow: @week\n' This is how I tag my projects as a whole.
         if ':\n' in line:
             project = line.strip()[:-1]
         if '@due' in line:
@@ -46,9 +47,14 @@ for line in tplines:
 today = overdue = duethisweek = startthisweek = None
 today_date = datetime.date(datetime.now())
 
-print 'SUMMARY for %s [%s]' % (tpfile, str(datetime.now())[:16])
+#check out http://stackoverflow.com/questions/287871/print-in-terminal-with-colors-using-python
+em_color = '\033[92m'
+default_color = '\033[0m'
 
-print '\nTODAY\n'
+# print 'SUMMARY for %s [%s]' % (tpfile, str(datetime.now())[:16])
+print 'SUMMARY from %s' %str(datetime.now())[:16]
+
+print em_color+'\nTODAY\n'+default_color
 
 for task in flaglist:
     if task.type == 'today':
@@ -59,7 +65,7 @@ for task in flaglist:
         print '\t[%s] %s' % (task.project, task.task)
 if not today:
     print '\t (none)'
-'''
+
 print '\nOVERDUE\n'
 
 for task in flaglist:
@@ -78,7 +84,7 @@ for task in flaglist:
         print '\t[%s] %s' % (task.project, task.task)
 if not duethisweek:
     print '\t (none)'
-
+'''
 print '\nSTARTING THIS WEEK\n'
 
 for task in flaglist:
