@@ -41,6 +41,10 @@ for line in tplines:
         if '@today' in line:
             flaglist.append(
                 Flagged('today', datetime.now(), project, line.strip()))
+        if '@week' in line:
+            flaglist.append(
+                Flagged('week', datetime.now(), project, line.strip()))
+                #a taskdate of now() does not work the best for @week, but it is not used.
     except Exception, e:
         errlist.append((line, e))
 
@@ -84,6 +88,17 @@ for task in flaglist:
         print '\t[%s] %s' % (task.project, task.task)
 if not duethisweek:
     print '\t (none)'
+
+print '\nTODO NEXT\n'
+
+for task in flaglist:
+    if task.type == 'week':
+        week = True
+        print '\t[%s] %s' % (task.project, task.task)
+if not week:
+    print '\t (none)'
+
+
 '''
 print '\nSTARTING THIS WEEK\n'
 
