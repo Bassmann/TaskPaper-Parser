@@ -4,6 +4,10 @@ Script to parse a [TaskPaper](http://www.hogbaysoftware.com/products/taskpaper) 
 
 The current use is with something like [GeekTool](http://projects.tynsoe.org/en/geektool/) for listing the summary on the desktop, but it may be worked into an Alfred2 Workflow in the future.
 
+## Prior to first use
+
+I made some small changes to remove errors under Python 3 (only tested on Windows). As PYthon 3 doesn't seem to include dateutil run `pip3 install python-dateutil` first.
+
 ## Usage
 
 `python tpp.py <input file>`
@@ -50,3 +54,4 @@ ERROR PARSING THESE LINES
 ## Changes
 
 * February 2 2014; Inital version.
+* February 16 2018; Forked to make it work with Python 3 on Windows
